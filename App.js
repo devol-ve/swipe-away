@@ -1,16 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, SafeAreaView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import CustomButton from './src/components/CustomButton';
 import CustomInput from './src/components/CustomInput';
+import SafeViewAndroid from './src/components/SafeViewAndroid';
 
-export default function App() {
+
+const SignInScreen = ({setAuth}) => {
   const [ username, setUsername ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
 
   const onSignIn = () => {
     console.log( 'Username: ', username );
     console.log( 'Password: ', password );
+    setAuth('sample-token');
   };
 
   const onForgot = () => {
@@ -18,7 +21,7 @@ export default function App() {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
       <View style = { styles.container }>
         <CustomInput
           value = { username }
@@ -40,9 +43,28 @@ export default function App() {
           onPress = { onForgot }
           type = { 'TERTIARY' }
         />
-        <StatusBar style = 'auto' />
       </View>
     </TouchableWithoutFeedback>
+  );
+};
+
+const HomeScreen = () => {
+  return(
+    <>
+      <Text>Success!</Text>
+    </>
+  )
+};
+
+export default function App() {
+  const [ auth, setAuth ] = React.useState('');
+  
+  return (
+    <SafeAreaView style = { SafeViewAndroid.AndroidSafeArea }>
+      <StatusBar style = 'auto' />
+      { auth && <HomeScreen />}
+      { auth === '' && <SignInScreen setAuth = { setAuth }/>}
+     </SafeAreaView>
   );
 };
 
