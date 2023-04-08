@@ -4,7 +4,7 @@ import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'reac
 import CustomButton from './src/components/CustomButton';
 import CustomInput from './src/components/CustomInput';
 
-export default function App() {
+const App = () => {
   const [ username, setUsername ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
 
@@ -54,3 +54,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;

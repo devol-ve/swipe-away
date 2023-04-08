@@ -16,7 +16,7 @@ const CustomButton = ({ onPress, text, type = 'PRIMARY', bgColor, fgColor, disab
             speed: 2,
             useNativeDriver: true,
         }).start();
-        // onPress();
+        onPress();
     };
 
     return (
