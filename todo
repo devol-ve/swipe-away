@@ -1,0 +1,5 @@
+- [] validate credentials prior to submission
+- [] hash credentials prior to sending to backend
+- [] search for matching hash in db
+- [] generate/return access token
+- [] social signin button(s)

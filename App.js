@@ -4,10 +4,10 @@ import { Image, Keyboard, SafeAreaView, StyleSheet, Text, TouchableWithoutFeedba
 import CustomButton from './src/components/CustomButton';
 import CustomInput from './src/components/CustomInput';
 import SafeViewAndroid from './src/components/SafeViewAndroid';
-import Logo from './assets/logo.png'
+import Logo from './assets/logo.png';
 
 
-const SignInScreen = ({setAuth}) => {
+const SignInScreen = ({ setAuth }) => {
   const { height } = useWindowDimensions();
   const [ username, setUsername ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
@@ -15,7 +15,7 @@ const SignInScreen = ({setAuth}) => {
   const onSignIn = () => {
     console.log( 'Username: ', username );
     console.log( 'Password: ', password );
-    setAuth('sample-token');
+    setAuth( 'sample-token' );
   };
 
   const onForgot = () => {
@@ -55,21 +55,25 @@ const SignInScreen = ({setAuth}) => {
   );
 };
 
-const HomeScreen = () => {
+const HomeScreen = ({ setAuth }) => {
   return(
     <>
       <Text style = {{textAlign: 'center', textAlignVertical: 'center'}}>Success!</Text>
+      <CustomButton
+        text = { 'Sign Out' }
+        onPress = { () => setAuth('') }
+      />
     </>
   )
 };
 
-export default function App() {
+const App = () => {
   const [ auth, setAuth ] = React.useState('');
   
   return (
     <SafeAreaView style = { SafeViewAndroid.AndroidSafeArea }>
       <StatusBar style = 'auto' />
-      { auth && <HomeScreen />}
+      { auth && <HomeScreen setAuth = { setAuth }/>}
       { auth === '' && <SignInScreen setAuth = { setAuth }/>}
      </SafeAreaView>
   );
@@ -87,5 +91,8 @@ const styles = StyleSheet.create({
     width: '70%',
     maxWidth: 300,
     maxHeight: 200,
+    marginBottom: 80,
 },
 });
+
+export default App;
