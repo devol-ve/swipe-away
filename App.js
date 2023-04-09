@@ -4,6 +4,7 @@ import { SafeAreaView, Text } from 'react-native';
 import CustomButton from '@components/CustomButton';
 import SafeViewAndroid from '@components/SafeViewAndroid';
 import SignInScreen from '@screens/SignInScreen';
+import SignUpScreen from '@screens/SignUpScreen';
 
 
 
@@ -27,7 +28,7 @@ const App = () => {
     <SafeAreaView style = { SafeViewAndroid.AndroidSafeArea }>
       <StatusBar style = 'auto' />
       { auth && <HomeScreen setAuth = { setAuth }/>}
-      { auth === '' && <SignInScreen setAuth = { setAuth }/>}
+      { auth === '' && <SignUpScreen setAuth = { setAuth }/>}
      </SafeAreaView>
   );
 };
