@@ -1,9 +1,9 @@
 import { View, TextInput, StyleSheet } from 'react-native';
 import styles from '@styles';
 
-const CustomInput = ({ value, setValue, placeholder, secureTextEntry }) => {
+const CustomInput = ({ value, setValue, placeholder, secureTextEntry, isValid = true }) => {
     return (
-        <View style = { styles.inputContainer } >
+        <View style = {[ styles.inputContainer, isValid ? {} : { borderColor: '#f00' }]} >
             <TextInput
                 value = { value }
                 onChangeText = { setValue }

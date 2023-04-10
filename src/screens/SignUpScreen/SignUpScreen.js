@@ -11,27 +11,53 @@ import styles from '@styles';
 import CustomButton from '@components/CustomButton';
 import CustomInput from '@components/CustomInput';
 import Logo from '@assets/logo.png';
+import AuthContext from '@context/AuthContext';
 
-const SignUpScreen = ({ setAuth }) => {
+const SignUpScreen = ({ navigation }) => {
+  const { signUp } = React.useContext( AuthContext );
   const { height } = useWindowDimensions();
   const [ username, setUsername ] = React.useState('');
   const [ firstName, setFirstName ] = React.useState('');
   const [ lastName, setLastName ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
   const [ confirmPassword, setConfirmPassword ] = React.useState('');
+  
+  let isMatch = true;
 
   const onFormSubmission = () => {
+    isMatch = ( password === confirmPassword );
     console.log( 'Username: ', username );
     console.log( 'First Name: ', firstName);
     console.log( 'Last Name: ', lastName);
     console.log( 'Password: ', password );
-    console.log( 'Confirmed: ', ( password === confirmPassword ));
-    setAuth( 'sample-token' );
+    console.log( 'Confirmed: ', ( isMatch ));
+    isMatch ?
+      signUp(
+        username,
+        firstName,
+        lastName,
+        password,
+      ) : ( InvalidForm() );
   };
 
   const onSignIn = () => {
     console.log( 'Forgot Password' );
   };
+
+  const InvalidForm = () => {
+    return (
+      <>
+        { isMatch ? (
+          <></>
+          ) :
+          (
+          <Text style = {{color: '#f00'}}>
+            Passwords do not match.
+          </Text>
+          )}
+      </>
+    )
+  }
 
   return (
     <TouchableWithoutFeedback onPress = { Keyboard.dismiss } accessible = { false }>
@@ -41,6 +67,7 @@ const SignUpScreen = ({ setAuth }) => {
           alt = 'Swipe Away Logo'
           style = {[ styles.logo, { height: height * 0.3 }]}
         />
+        <InvalidForm/>
         <CustomInput
           value = { username }
           setValue = { setUsername }
@@ -61,12 +88,14 @@ const SignUpScreen = ({ setAuth }) => {
           setValue = { setPassword }
           placeholder = { 'Set Password' }
           secureTextEntry
+          isValid = { isMatch }
         />
         <CustomInput
           value = { confirmPassword }
           setValue = { setConfirmPassword }
           placeholder = { 'Confirm Password' }
           secureTextEntry
+          isValid = { false }
         />
         <CustomButton
           text = { 'Sign Up' }

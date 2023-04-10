@@ -10,16 +10,19 @@ import styles from '@styles';
 import CustomButton from '@components/CustomButton';
 import CustomInput from '@components/CustomInput';
 import Logo from '@assets/logo.png';
+import AuthContext from '@context/AuthContext';
 
-const SignInScreen = ({ setAuth }) => {
+const SignInScreen = ({ navigation }) => {
   const { height } = useWindowDimensions();
   const [ username, setUsername ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
 
+  const { signIn } = React.useContext(AuthContext);
+
   const onSignIn = () => {
     console.log( 'Username: ', username );
     console.log( 'Password: ', password );
-    setAuth( 'sample-token' );
+    signIn({ username, password })
   };
 
   const onForgot = () => {
@@ -48,6 +51,11 @@ const SignInScreen = ({ setAuth }) => {
         <CustomButton
           text = { 'Sign In' }
           onPress = { onSignIn }
+        />
+        <CustomButton
+          text = { 'Sign Up' }
+          onPress = { () => navigation.navigate('SignUp') }
+          type = { 'TERTIARY' }
         />
         <CustomButton
           text = { 'Forgot Password' }
