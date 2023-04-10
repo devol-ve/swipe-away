@@ -1,29 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { SafeAreaView, Text } from 'react-native';
-import CustomButton from '@components/CustomButton';
-import SafeViewAndroid from '@components/SafeViewAndroid';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignInScreen from '@screens/SignInScreen';
 import SignUpScreen from '@screens/SignUpScreen';
 import SplashScreen from '@screens/SplashScreen';
+import HomeScreen from '@screens/HomeScreen';
 import AuthContext from '@context/AuthContext';
 import styles from '@styles';
 
-
-const HomeScreen = () => {
-  const { signOut } = React.useContext(AuthContext);
-  return(
-    <>
-      <Text style = {{textAlign: 'center', textAlignVertical: 'center'}}>Success!</Text>
-      <CustomButton
-        text = { 'Sign Out' }
-        onPress = { signOut }
-      />
-    </>
-  )
-};
 
 const Stack = createNativeStackNavigator();
 
@@ -107,6 +91,7 @@ const App = ({ navigation }) => {
                 name = 'SignIn'
                 component = { SignInScreen }
                 options={{
+                  headerShown: false,
                   contentStyle: styles,
                   title: 'Sign In',
                   animationTypeForReplace: state.isSignOut ? 'pop' : 'push',
@@ -116,6 +101,7 @@ const App = ({ navigation }) => {
                 name = 'SignUp'
                 component = { SignUpScreen }
                 options={{
+                  headerShown: false,
                   title: 'Sign Up',
                   animationTypeForReplace: state.isSignOut ? 'pop' : 'push',
                 }}

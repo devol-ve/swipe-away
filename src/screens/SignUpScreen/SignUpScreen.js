@@ -104,7 +104,7 @@ const SignUpScreen = ({ navigation }) => {
         <Text>Already have an account?</Text>
         <CustomButton
           text = { 'Sign In' }
-          onPress = { onSignIn }
+          onPress = { () => navigation.navigate('SignIn') }
           type = { 'TERTIARY' }
         />
       </View>
