@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Animated, Image, Pressable, Text } from 'react-native';
-import styles from '@styles';
+import styles from 'styles';
 
 const CustomButton = ({ onPress, text, type = 'PRIMARY', bgColor, fgColor, disabled = false, image }) => {
     const animatedScale = React.useRef(new Animated.Value(0)).current;

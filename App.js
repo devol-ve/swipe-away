@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SignInScreen from '@screens/SignInScreen';
-import SignUpScreen from '@screens/SignUpScreen';
-import SplashScreen from '@screens/SplashScreen';
-import HomeScreen from '@screens/HomeScreen';
-import AuthContext from '@context/AuthContext';
-import styles from '@styles';
+import {
+  HomeScreen,
+  SignInScreen,
+  SignUpScreen,
+  SplashScreen,
+} from 'screens';
+import { AuthContext } from 'context';
 
 
 const Stack = createNativeStackNavigator();
@@ -82,7 +83,7 @@ const App = ({ navigation }) => {
   return (
     <AuthContext.Provider value = { authContext }>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions = {{headerShown: false }}>
           { state.isLoading ? (
             <Stack.Screen name = 'Splash' component = { SplashScreen }/>
           ) : state.userToken == null ? (
@@ -90,31 +91,16 @@ const App = ({ navigation }) => {
               <Stack.Screen
                 name = 'SignIn'
                 component = { SignInScreen }
-                options={{
-                  headerShown: false,
-                  contentStyle: styles,
-                  title: 'Sign In',
-                  animationTypeForReplace: state.isSignOut ? 'pop' : 'push',
-                }}
+                options = {{ animationTypeForReplace: state.isSignOut ? 'pop' : 'push' }}
                 />
               <Stack.Screen
                 name = 'SignUp'
                 component = { SignUpScreen }
-                options={{
-                  headerShown: false,
-                  title: 'Sign Up',
-                  animationTypeForReplace: state.isSignOut ? 'pop' : 'push',
-                }}
+                options = {{ animationTypeForReplace: state.isSignOut ? 'pop' : 'push' }}
                 />
             </>
           ) : (
-            <Stack.Screen
-              name = 'Home'
-              component = { HomeScreen }
-              options={{
-                headerShown: false,
-              }}
-            />
+            <Stack.Screen name = 'Home' component = { HomeScreen }/>
         )}
         </Stack.Navigator>
       </NavigationContainer>

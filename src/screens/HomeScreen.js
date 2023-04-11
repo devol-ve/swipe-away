@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CustomButton from '@components/CustomButton';
-import AuthContext from '@context/AuthContext';
-import styles from '@styles';
+import { CustomButton } from 'components';
+import { AuthContext } from 'context';
+import styles from 'styles';
 
 const MainScreen = () => {
   return (
@@ -43,6 +43,7 @@ const HomeScreen = () => {
       <Tab.Navigator
         initialRouteName = 'Main'
         screenOptions={{
+          tabBarLabelPosition: 'beside-icon',
           tabBarIconStyle: { display: 'none' },
           tabBarInactiveTintColor: '#C2E7F0',
       }}>

@@ -7,11 +7,10 @@ import {
   useWindowDimensions,
   View, 
 } from 'react-native';
-import styles from '@styles';
-import CustomButton from '@components/CustomButton';
-import CustomInput from '@components/CustomInput';
-import Logo from '@assets/logo.png';
-import AuthContext from '@context/AuthContext';
+import { CustomButton, CustomInput } from 'components';
+import { AuthContext } from 'context';
+import Logo from 'assets/logo.png';
+import styles from 'styles';
 
 const SignUpScreen = ({ navigation }) => {
   const { signUp } = React.useContext( AuthContext );

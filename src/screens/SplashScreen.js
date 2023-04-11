@@ -4,8 +4,8 @@ import {
   useWindowDimensions,
   View, 
 } from 'react-native';
-import styles from '@styles';
-import Logo from '@assets/logo.png';
+import Logo from 'assets/logo.png';
+import styles from 'styles';
 
 const SplashScreen = () => {
   const { height } = useWindowDimensions();

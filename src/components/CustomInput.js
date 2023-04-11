@@ -1,5 +1,5 @@
 import { View, TextInput, StyleSheet } from 'react-native';
-import styles from '@styles';
+import styles from 'styles';
 
 const CustomInput = ({ value, setValue, placeholder, secureTextEntry, isValid = true }) => {
     return (
