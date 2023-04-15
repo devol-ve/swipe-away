@@ -1,6 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+
+// !! Temporary !!
+  albumCover: {
+    height: 180,
+    width: 180,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    marginBottom: 10,
+  },
+
   button: {
     flex: 1,
     padding: 15,
@@ -38,6 +48,13 @@ const styles = StyleSheet.create({
     color: '#0E1A1F',
   },
 
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 50,
+  },
 
   container: {
     flex: 1,
@@ -46,6 +63,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
   },
+
+  image: {
+    height: 270,
+    width: 180,
+  }, 
 
   inputContainer: {
     backgroundColor: '#FFFFFF',

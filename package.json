@@ -9,10 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.1.6",
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "eslint": "^2",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-module-resolver": "^1.5.0",
@@ -20,8 +22,12 @@
     "expo-status-bar": "~1.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-native": "^0.71.6",
-    "react-native-web": "~0.18.9"
+    "react-native": "0.71.6",
+    "react-native-deck-swiper": "^2.0.13",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "^3.20.0",
+    "react-native-web": "~0.18.9",
+    "watchman": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
