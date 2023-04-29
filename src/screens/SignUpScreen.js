@@ -15,32 +15,28 @@ import styles from 'styles';
 const SignUpScreen = ({ navigation }) => {
   const { signUp } = React.useContext( AuthContext );
   const { height } = useWindowDimensions();
-  const [ username, setUsername ] = React.useState('');
-  const [ firstName, setFirstName ] = React.useState('');
-  const [ lastName, setLastName ] = React.useState('');
+  const [ uname, setUsername ] = React.useState('');
+  const [ fname, setFirstName ] = React.useState('');
+  const [ lname, setLastName ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
   const [ confirmPassword, setConfirmPassword ] = React.useState('');
+  const [ isMatch, compare ] = React.useState( 'true' );
   
-  let isMatch = true;
 
   const onFormSubmission = () => {
-    isMatch = ( password === confirmPassword );
-    console.log( 'Username: ', username );
-    console.log( 'First Name: ', firstName);
-    console.log( 'Last Name: ', lastName);
+    compare( password === confirmPassword );
+    console.log( 'Username: ', uname );
+    console.log( 'First Name: ', fname );
+    console.log( 'Last Name: ', lname );
     console.log( 'Password: ', password );
     console.log( 'Confirmed: ', ( isMatch ));
     isMatch ?
-      signUp(
-        username,
-        firstName,
-        lastName,
+      signUp({
+        uname,
+        fname,
+        lname,
         password,
-      ) : ( InvalidForm() );
-  };
-
-  const onSignIn = () => {
-    console.log( 'Forgot Password' );
+      }) : ( InvalidForm() );
   };
 
   const InvalidForm = () => {
@@ -50,9 +46,7 @@ const SignUpScreen = ({ navigation }) => {
           <></>
           ) :
           (
-          <Text style = {{color: '#f00'}}>
-            Passwords do not match.
-          </Text>
+          alert('The passwords do not match.')
           )}
       </>
     )
@@ -68,17 +62,17 @@ const SignUpScreen = ({ navigation }) => {
         />
         <InvalidForm/>
         <CustomInput
-          value = { username }
+          value = { uname }
           setValue = { setUsername }
           placeholder = { 'Username' }
         />
         <CustomInput
-          value = { firstName }
+          value = { fname }
           setValue = { setFirstName }
           placeholder = { 'First Name' }
         />
         <CustomInput
-          value = { lastName }
+          value = { lname }
           setValue = { setLastName }
           placeholder = { 'Last Name' }
         />
@@ -94,7 +88,7 @@ const SignUpScreen = ({ navigation }) => {
           setValue = { setConfirmPassword }
           placeholder = { 'Confirm Password' }
           secureTextEntry
-          isValid = { false }
+          isValid = { isMatch }
         />
         <CustomButton
           text = { 'Sign Up' }
@@ -103,7 +97,7 @@ const SignUpScreen = ({ navigation }) => {
         <Text>Already have an account?</Text>
         <CustomButton
           text = { 'Sign In' }
-          onPress = { () => navigation.navigate('SignIn') }
+          onPress = { () => navigation.navigate( 'SignIn' ) }
           type = { 'TERTIARY' }
         />
       </View>

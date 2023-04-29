@@ -3,23 +3,40 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "npm-run-all --parallel expo-start",
+    "expo-start": "expo start --tunnel",
+    "server": "nodemon server/index.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
   "dependencies": {
     "@babel/preset-env": "^7.1.6",
+    "@expo/ngrok": "^4.1.0",
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
-    "eslint": "^2",
+    "axios": "^1.3.6",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "eslint": "^8.39.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-module-resolver": "^1.5.0",
     "expo": "^48.0.4",
+    "expo-secure-store": "^12.1.1",
     "expo-status-bar": "~1.4.4",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.2.4",
+    "net": "^1.0.2",
+    "node": "^19.8.1",
+    "nodemon": "^2.0.22",
+    "npm-run-all": "^4.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "0.71.6",
@@ -27,12 +44,14 @@
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "^3.20.0",
     "react-native-web": "~0.18.9",
+    "sequelize": "^6.31.0",
     "watchman": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/react-native": "^0.71.3",
-    "babel-plugin-module-resolver": "^5.0.0"
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint-plugin-react": "^7.32.2"
   },
   "private": true
 }

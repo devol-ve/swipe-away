@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Image,
   Keyboard,
+  Text,
   TouchableWithoutFeedback,
   useWindowDimensions,
   View, 
@@ -13,15 +14,16 @@ import styles from 'styles';
 
 const SignInScreen = ({ navigation }) => {
   const { height } = useWindowDimensions();
-  const [ username, setUsername ] = React.useState('');
+  const [ uname, setUsername ] = React.useState('');
   const [ password, setPassword ] = React.useState('');
 
   const { signIn } = React.useContext(AuthContext);
 
+  //console.log(route.params)
   const onSignIn = () => {
-    console.log( 'Username: ', username );
+    console.log( 'Username: ', uname );
     console.log( 'Password: ', password );
-    signIn({ username, password })
+    signIn({ uname, password })
   };
 
   const onForgot = () => {
@@ -37,7 +39,7 @@ const SignInScreen = ({ navigation }) => {
           style = {[ styles.logo, { height: height * 0.3 }]}
         />
         <CustomInput
-          value = { username }
+          value = { uname }
           setValue = { setUsername }
           placeholder = { 'Username' }
         />
@@ -51,6 +53,7 @@ const SignInScreen = ({ navigation }) => {
           text = { 'Sign In' }
           onPress = { onSignIn }
         />
+        <Text>Don&apos;t have an account yet?</Text>
         <CustomButton
           text = { 'Sign Up' }
           onPress = { () => navigation.navigate('SignUp') }

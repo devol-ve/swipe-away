@@ -8,25 +8,21 @@ import styles from 'styles';
 
 const MainScreen = () => {
   const [ cardsData ] = React.useState([
-    { name: 'Crepes', src: { uri: 'https://images.pexels.com/photos/3225499/pexels-photo-3225499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$5.00' },
-    { name: 'Pancakes', src: { uri: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$4.00' },
-    { name: 'Waffles', src: { uri: 'https://images.pexels.com/photos/221063/pexels-photo-221063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$4.50' },
-    { name: 'Oatmeal', src: { uri: 'https://images.pexels.com/photos/4488082/pexels-photo-4488082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$3.00' },
-    { name: 'Salmon', src: {uri: 'https://images.pexels.com/photos/842142/pexels-photo-842142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$25.00' },
-    { name: 'Steak', src: { uri: 'https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$22.00' },
-    { name: 'Salad', src: { uri: 'https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$12.00' },
-    { name: 'Pasta', src: { uri: 'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }, price: '$18.00' },
-    { name: 'Dark Side of The Moon', artist: 'Pink Floyd', src: {uri: 'https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png' }, price: '$14.99' },
-    { name: 'Plastic Beach', artist: 'Gorillaz', src: {uri: 'https://upload.wikimedia.org/wikipedia/en/d/d1/Plasticbeach452.jpg' }, price: '$16.99' },
-    { name: 'The Search', artist: 'NF', src: {uri: 'https://upload.wikimedia.org/wikipedia/en/1/1b/NF_-_The_Search.png' }, price: '$10.98' },
-    { name: 'Lighght', artist: 'Kishi Bashi', src: {uri: 'https://upload.wikimedia.org/wikipedia/en/6/6c/Lighght_-_album_cover.jpg' }, price: '$14.98' },
-    { name: 'Swiss Army Man', src: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9MFR2j3GbNUXoUaZSPlkkbEbnKtn9WfuoHnyjGyjIrYPuN6F7' }, price: '$13.99' },
-    { name: 'Everything Everywhere All at Once', src: { uri: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSHXnPFszcpNapxaCWUSBl3LZezeb-9X_HUKcefCmNZfbPZzmZ5' }, price: '$7.59' },
-    { name: 'Monty Python and the Holy Grail', src: { uri: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRApn9SAnMd2irMIB8djmkoQ6oO5M7BR3qli56ly6coVxOane7R' }, price: '$9.99' },
-    { name: 'Source Code', src: { uri: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTcQkRU-m9otcd788GwWIIEtuCiYmjfy8ySoUvEFxEqsAf9vhrD' }, price: '$5.80' },
+    { name: 'Grizzly\'s', src: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrfzdb0RYtI-4qEBSC1ekpBwSG51wNo9GFwA&usqp=CAU' }, likes: 1 },
+    { name: 'Perkin\'s', src: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJVQp77aMNLHd6SpgZdyGao-rA6nNOI36irg&usqp=CAU' }, likes: 0 },
+    { name: 'Applebee\'s', src: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxpkAFerov6BYKwPTgIN_m9F3RMDXXYhaqaw&usqp=CAU' }, likes: 0 },
+    { name: 'Fuji', src: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxZfUJASc3eYXO3HGBHrG_y_Izw58AdngkGw&usqp=CAU' }, likes: 2 },
+    { name: 'Red Robin', src: {uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4-2swnbcJ443N64mUBuaqDlgLYdAdDBizQw&usqp=CAU' }, likes: 2 },
   ])
 
   const { width, height } = useWindowDimensions();
+
+  const handleRightSwipe = ( card ) => {
+    let likes = card.likes + 1;
+    if( likes === myGroup.size ) {
+
+    }
+  }
 
   return (
     <View style = { styles.container }>
@@ -86,7 +82,7 @@ const HomeScreen = () => {
           tabBarInactiveTintColor: '#C2E7F0',
       }}>
         <Tab.Screen name = 'Profile' component = { ProfileScreen }/>
-        <Tab.Screen name = 'Main' component = { MainScreen } options={{ headerShown: false,  }} />
+        <Tab.Screen name = 'Main' component = { MainScreen } options={{ headerShown: false }} />
         <Tab.Screen name = 'Groups' component = { GroupScreen }/>
       </Tab.Navigator>
     </>
